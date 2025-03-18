@@ -1,103 +1,83 @@
-import Image from "next/image";
+import { BackgroundBeams } from "@/components/background-beams";
+import { Button } from "@/components/ui/button";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { AuroraBackground } from "@/components/aurora-background";
+import { HeroParallax } from "@/components/hero-parallax";
+
+const projects = [
+  {
+    title: "Full Stack Admin Website",
+    link: "#",
+    thumbnail: "/tech-admin.png",
+  },
+  {
+    title: "LAMP Stack Documentation Website",
+    link: "#",
+    thumbnail: "/lamp-docs.png",
+  },
+  {
+    title: "Weather App",
+    link: "#",
+    thumbnail: "/weather-app.png",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen w-full bg-black">
+      {/* Hero Section */}
+      <section className="h-screen w-full bg-black">
+        <AuroraBackground>
+          <div className="text-center space-y-5 max-w-3xl z-10">
+            <div className="space-y-3">
+              <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-pink-500 via-purple-400 to-blue-500 text-transparent font-semibold">
+                Hi, I&apos;m Reese Parsons
+              </h1>
+            </div>
+            <p className="text-gray-400 text-lg text-pretty">
+              I am a <span className="bg-clip-text bg-gradient-to-r from-purple-500  to-rose-500 text-transparent font-semibold">Full Stack Developer</span> from
+              Nova Scotia, Canada. Below you will find some info about me, my
+              projects, and a resume outlining my skills and experiences
+            </p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <div className="space-x-3">
+              <Button variant="default" className="rounded-lg">
+                <FaGithub className="w-4 h-4" />
+                GitHub  
+              </Button>
+              <Button variant="secondary" className="rounded-lg">
+                <FaLinkedin className="w-4 h-4" />
+                LinkedIn
+              </Button>
+            </div>
+          </div>
+        </AuroraBackground>
+      </section>
+
+      {/* About Section */}
+      <section className="relative min-h-screen w-full bg-black">
+        <BackgroundBeams />
+        <div className="relative z-10 container mx-auto px-4 py-20">
+          <h2 className="text-4xl font-bold text-center mb-8 bg-clip-text bg-gradient-to-r from-pink-500 to-blue-500 text-transparent">
+            About Me
+          </h2>
+          <div className="max-w-3xl mx-auto text-gray-300">
+            <p className="text-lg leading-relaxed mb-3">
+              I&apos;m Reese Parsons, a 2nd year student in the IT Web Programming course at Nova Scotia Community College.</p>
+            <p className="text-lg leading-relaxed mb-3">
+              I was born and raised in Truro, Nova Scotia, and first starting programming in 2022, self teaching myself Python using online courses. I discovered a passion for programming and decided it was something I wanted to pursue.
+            </p>
+            <p className="text-lg leading-relaxed">
+              Since starting the program, I have discovered and learned a multitude of technologies, including NextJS on React, ASP.NET Core, Java, SQL, MongoDB, and many, many more. I am always eager to learn new technologies and adapt to the ever changing world of web and software development.
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="relative w-full">
+        <HeroParallax products={projects} />
+      </section>
+    </main>
   );
 }

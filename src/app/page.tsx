@@ -3,24 +3,36 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { LampContainer } from "@/components/ui/lamp";
 import { Spotlight } from "@/components/ui/spotlight-new";
-import { BackgroundGradient } from "@/components/ui/background-gradient";
-import Image from "next/image";
+import { ProjectCard, ProjectCardProps } from "@/components/ui/project-card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 const projects = [
   {
-    title: "Full Stack Admin Website",
-    link: "#",
-    thumbnail: "/tech-admin.png",
+    title: "Tech Roster Admin",
+    description: "An administration end that allows users to edit the content of the Tech Roster frontend. Made with React and NextJS using a MongoDB database and the Shadcn UI library. Uses a custom REST API for data handling between the app and database.",
+    technologies: [
+      { name: "React" },
+      { name: "NextJS" },
+      { name: "TypeScript" },
+      { name: "MongoDB" },
+      { name: "Tailwind CSS" },
+    ],
+    sourceCodeUrl: "#",
+    image: "/tech-admin.png"
   },
   {
-    title: "LAMP Stack Documentation Website",
-    link: "#",
-    thumbnail: "/lamp-docs.png",
-  },
-  {
-    title: "Weather App",
-    link: "#",
-    thumbnail: "/weather-app.png",
+    title: "Launch Pad",
+    description: "A launch pad app made with ASP.NET Core using EF Core. A web app that features authentication and some dashboard customization options, including the ability to pin links, edit categories and light/dark mode.",
+    technologies: [
+      { name: "ASP.NET Core" },
+      { name: "Bootstrap" },
+      { name: "MySQL" },
+      { name: "Tailwind CSS" },
+    ],
+    sourceCodeUrl: "#",
+    image: "/launch-pad.png"
   },
 ];
 
@@ -32,12 +44,12 @@ export default function Home() {
         <AuroraBackground>
           <div className="text-center space-y-5 max-w-3xl z-10">
             <div className="space-y-3">
-              <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-blue-300 to-blue-500 text-transparent font-semibold">
+              <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 text-transparent font-semibold">
                 Hi, I&apos;m Reese Parsons
               </h1>
             </div>
             <p className="text-gray-400 text-lg text-pretty">
-              I am a <span className="bg-clip-text bg-gradient-to-r from-blue-300 to-blue-500 text-transparent font-semibold">Full Stack Developer</span> from
+              I am a <span className="bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 text-transparent font-semibold">Full Stack Developer</span> from
               Nova Scotia, Canada. Below you will find some info about me, my
               projects, and a resume outlining my skills and experiences
             </p>
@@ -60,7 +72,7 @@ export default function Home() {
       <section className="relative min-h-screen w-full bg-black">
         <LampContainer>
         <div className="relative z-10 container mx-auto px-4 py-20 text-center">
-        <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-blue-300 to-blue-500 text-transparent font-semibold mb-10">
+        <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500 text-transparent font-semibold mb-10">
                 About Me
             </h1>
           <div className="max-w-3xl mx-auto text-gray-300">
@@ -78,36 +90,71 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="relative w-full bg-black py-20 min-h-screen overflow-hidden">
+      <section className="relative w-full bg-black py-32 min-h-screen overflow-hidden">
         <Spotlight />
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-blue-300 to-blue-500 text-transparent font-semibold mb-10">
+        <div className="container mx-auto px-4 text-center relative">
+          <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500 text-transparent font-semibold mb-20">
             Projects
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
-            {projects.map((project, index) => (
-              <BackgroundGradient key={index} className="h-full">
-                <div className="flex flex-col h-[400px] p-6">
-                  <div className="relative w-full h-[250px] rounded-lg overflow-hidden">
-                    <Image
-                      src={project.thumbnail}
-                      alt={project.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-col flex-grow justify-between mt-4">
-                    <h3 className="text-xl font-bold text-white">{project.title}</h3>
-                    <a
-                      href={project.link}
-                      className="mt-2 inline-block text-sm text-gray-400 hover:text-white transition-colors"
-                    >
-                      View Project →
-                    </a>
-                  </div>
-                </div>
-              </BackgroundGradient>
+            {projects.map((project: ProjectCardProps, index) => (
+              <ProjectCard
+                key={index}
+                {...project}
+              />
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="relative w-full bg-black py-32 min-h-screen overflow-hidden">
+        <div className="container mx-auto px-4 text-center relative">
+          <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-neutral-300 to-neutral-500 text-transparent font-semibold mb-20">
+            Contact Me
+          </h1>
+          <div className="max-w-2xl mx-auto">
+            <form className="space-y-6">
+              <div className="space-y-2 text-left">
+                <label htmlFor="name" className="text-sm font-medium text-gray-300">
+                  Name
+                </label>
+                <Input
+                  type="text"
+                  id="name"
+                  placeholder="Your name"
+                  className="bg-zinc-900 border-zinc-800 text-white"
+                />
+              </div>
+              <div className="space-y-2 text-left">
+                <label htmlFor="email" className="text-sm font-medium text-gray-300">
+                  Email
+                </label>
+                <Input
+                  type="email"
+                  id="email"
+                  placeholder="your.email@example.com"
+                  className="bg-zinc-900 border-zinc-800 text-white"
+                />
+              </div>
+              <div className="space-y-2 text-left">
+                <label htmlFor="message" className="text-sm font-medium text-gray-300">
+                  Message
+                </label>
+                <Textarea
+                  id="message"
+                  placeholder="Your message..."
+                  className="bg-zinc-900 border-zinc-800 text-white resize-none"
+                />
+              </div>
+              <HoverBorderGradient
+                as="button"
+                containerClassName="w-full"
+                className="w-full bg-white text-black hover:bg-gray-200"
+              >
+                Send Message
+              </HoverBorderGradient>
+            </form>
           </div>
         </div>
       </section>

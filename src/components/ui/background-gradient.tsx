@@ -15,10 +15,12 @@ export const BackgroundGradient = ({
   return (
     <div className={cn("relative group", containerClassName)}>
       {/* Glow effect */}
-      <div className="absolute -inset-1 rounded-[22px] bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] opacity-50 blur-lg group-hover:opacity-75 group-hover:blur-xl transition-all duration-500" />
+      <div className="absolute -inset-[1px] rounded-lg bg-gradient-to-b from-neutral-800 to-neutral-950 p-[1px]">
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-white/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+      </div>
       
       {/* Content */}
-      <div className={cn("relative rounded-[22px] bg-zinc-900", className)}>
+      <div className={cn("relative rounded-lg bg-[#0A0A0A] border border-neutral-800/50", className)}>
         {children}
       </div>
     </div>

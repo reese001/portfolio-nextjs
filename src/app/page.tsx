@@ -1,8 +1,10 @@
-import { BackgroundBeams } from "@/components/background-beams";
 import { Button } from "@/components/ui/button";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
-import { AuroraBackground } from "@/components/aurora-background";
-import { HeroParallax } from "@/components/hero-parallax";
+import { AuroraBackground } from "@/components/ui/aurora-background";
+import { LampContainer } from "@/components/ui/lamp";
+import { Spotlight } from "@/components/ui/spotlight-new";
+import { BackgroundGradient } from "@/components/ui/background-gradient";
+import Image from "next/image";
 
 const projects = [
   {
@@ -30,12 +32,12 @@ export default function Home() {
         <AuroraBackground>
           <div className="text-center space-y-5 max-w-3xl z-10">
             <div className="space-y-3">
-              <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-pink-500 via-purple-400 to-blue-500 text-transparent font-semibold">
+              <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-blue-300 to-blue-500 text-transparent font-semibold">
                 Hi, I&apos;m Reese Parsons
               </h1>
             </div>
             <p className="text-gray-400 text-lg text-pretty">
-              I am a <span className="bg-clip-text bg-gradient-to-r from-purple-500  to-rose-500 text-transparent font-semibold">Full Stack Developer</span> from
+              I am a <span className="bg-clip-text bg-gradient-to-r from-blue-300 to-blue-500 text-transparent font-semibold">Full Stack Developer</span> from
               Nova Scotia, Canada. Below you will find some info about me, my
               projects, and a resume outlining my skills and experiences
             </p>
@@ -56,11 +58,11 @@ export default function Home() {
 
       {/* About Section */}
       <section className="relative min-h-screen w-full bg-black">
-        <BackgroundBeams />
-        <div className="relative z-10 container mx-auto px-4 py-20">
-          <h2 className="text-4xl font-bold text-center mb-8 bg-clip-text bg-gradient-to-r from-pink-500 to-blue-500 text-transparent">
-            About Me
-          </h2>
+        <LampContainer>
+        <div className="relative z-10 container mx-auto px-4 py-20 text-center">
+        <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-blue-300 to-blue-500 text-transparent font-semibold mb-10">
+                About Me
+            </h1>
           <div className="max-w-3xl mx-auto text-gray-300">
             <p className="text-lg leading-relaxed mb-3">
               I&apos;m Reese Parsons, a 2nd year student in the IT Web Programming course at Nova Scotia Community College.</p>
@@ -72,11 +74,42 @@ export default function Home() {
             </p>
           </div>
         </div>
+        </LampContainer>
       </section>
 
       {/* Projects Section */}
-      <section className="relative w-full">
-        <HeroParallax products={projects} />
+      <section className="relative w-full bg-black py-20 min-h-screen overflow-hidden">
+        <Spotlight />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h1 className="text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-blue-300 to-blue-500 text-transparent font-semibold mb-10">
+            Projects
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 max-w-7xl mx-auto">
+            {projects.map((project, index) => (
+              <BackgroundGradient key={index} className="h-full">
+                <div className="flex flex-col h-[400px] p-6">
+                  <div className="relative w-full h-[250px] rounded-lg overflow-hidden">
+                    <Image
+                      src={project.thumbnail}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-grow justify-between mt-4">
+                    <h3 className="text-xl font-bold text-white">{project.title}</h3>
+                    <a
+                      href={project.link}
+                      className="mt-2 inline-block text-sm text-gray-400 hover:text-white transition-colors"
+                    >
+                      View Project →
+                    </a>
+                  </div>
+                </div>
+              </BackgroundGradient>
+            ))}
+          </div>
+        </div>
       </section>
     </main>
   );

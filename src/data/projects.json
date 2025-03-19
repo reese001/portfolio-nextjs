@@ -1,0 +1,73 @@
+[
+    {
+        "title": "World Map Electron App",
+        "description": "A desktop application that allows users to view a world map, and search for a specific country, or click on a country to view more information about it. Made with Electron, React, and Tailwind CSS.",
+        "technologies": [
+          { "name": "React" },
+          { "name": "ElectronJS" },
+          { "name": "TypeScript" },
+          { "name": "Tailwind CSS" }
+        ],
+        "sourceCodeUrl": "#",
+        "image": "/world-map.png"
+      },
+  {
+    "title": "Tech Roster Admin",
+    "description": "An administration end that allows users to edit the content of the Tech Roster frontend. Made with React and NextJS using a MongoDB database and the Shadcn UI library. Uses a custom REST API for data handling between the app and database.",
+    "technologies": [
+      { "name": "React" },
+      { "name": "NextJS" },
+      { "name": "TypeScript" },
+      { "name": "MongoDB" },
+      { "name": "Tailwind CSS" }
+    ],
+    "sourceCodeUrl": "#",
+    "image": "/tech-admin.png"
+  },
+  {
+    "title": "Budgeting App",
+    "description": "A budgeting app made with PHP using the Laravel framework. The app allows users to create and edit budget categories, add and edit transactions, and view their spending.",
+    "technologies": [
+      { "name": "PHP" },
+      { "name": "Laravel" },
+      { "name": "MySQL" },
+      { "name": "Tailwind CSS" }
+    ],
+    "sourceCodeUrl": "#",
+    "image": "/budget-app.png"
+  },
+  {
+    "title": "Portfolio Website",
+    "description": "Portfolio website built with NextJS, Tailwind CSS, and TypeScript. Features a modern design with UI components from shad/cn and Aceturnity UI, and a responsive layout.",
+    "technologies": [
+      { "name": "NextJS" },
+      { "name": "React" },
+      { "name": "TypeScript" },
+      { "name": "Tailwind CSS" }
+    ],
+    "sourceCodeUrl": "#",
+    "image": "/portfolio.png"
+  }, 
+  {
+    "title": "PHP Review Site",
+    "description": "A review site made with PHP. The site allows users to create and edit reviews, and view reviews.",
+    "technologies": [
+      { "name": "PHP" },
+      { "name": "MySQL" },
+      { "name": "Tailwind CSS" }
+    ],
+    "sourceCodeUrl": "#",
+    "image": "/review-app-form.png"
+  },
+  {
+    "title": "Weather App",
+    "description": "A weather app made with vanilla JavaScript and CSS, this app allows users to select one of Canada's 100 most populated cities, and view the current weather conditions, temperature, and wind speed, using the OpenWeatherMap API.",
+    "technologies": [
+      { "name": "HTML" },
+      { "name": "CSS" },
+      { "name": "JavaScript" }
+    ],
+    "sourceCodeUrl": "#",
+    "image": "/weather-app.png"
+  }
+] 

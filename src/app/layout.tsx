@@ -17,9 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} antialiased`}>
+      <body className={`${montserrat.className} antialiased overflow-x-hidden`}>
         <Navbar />
-        <div className="relative">
+        <div className="relative w-full max-w-[100vw] overflow-x-hidden">
           {children}
         </div>
       </body>

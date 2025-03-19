@@ -11,36 +11,60 @@ import {
   SiTailwindcss,
   SiDotnet,
   SiBootstrap,
-  SiMysql
+  SiMysql,
+  SiJavascript,
+  SiPython,
+  SiHtml5,
+  SiCss3,
+  SiGit,
+  SiGithub,
+  SiNodedotjs,
+  SiNpm,
+  SiPhp,
+  SiLaravel,
 } from "react-icons/si";
+import { FaJava, FaCode } from "react-icons/fa";
+import { IoLogoElectron } from "react-icons/io5";
+import { Project } from "@/types";
 
-interface Technology {
-  name: string;
-  icon?: React.ElementType;
-}
+export type ProjectCardProps = Project;
 
-export interface ProjectCardProps {
-  title: string;
-  description: string;
-  technologies: Technology[];
-  sourceCodeUrl: string;
-  image: string;
-}
-
+// Extended icon map with more technologies
 const iconMap = {
   "React": SiReact,
   "NextJS": SiNextdotjs,
+  "Next.js": SiNextdotjs,
   "TypeScript": SiTypescript,
   "MongoDB": SiMongodb,
   "Tailwind CSS": SiTailwindcss,
+  "Tailwind": SiTailwindcss,
   "ASP.NET Core": SiDotnet,
+  "ASP.NET": SiDotnet,
+  ".NET": SiDotnet,
   "Bootstrap": SiBootstrap,
-  "MySQL": SiMysql
+  "MySQL": SiMysql,
+  "Java": FaJava,
+  "JavaScript": SiJavascript,
+  "Python": SiPython,
+  "HTML": SiHtml5,
+  "CSS": SiCss3,
+  "Git": SiGit,
+  "GitHub": SiGithub,
+  "Node.js": SiNodedotjs,
+  "NodeJS": SiNodedotjs,
+  "npm": SiNpm,
+  "PHP": SiPhp,
+  "Laravel": SiLaravel,
+  "ElectronJS": IoLogoElectron
 };
+
+// Default fallback icon
+const DefaultIcon = FaCode;
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technologies, sourceCodeUrl, image }) => {
   return (
-    <BackgroundGradient className="flex flex-col h-full p-6 gap-4">
+    <BackgroundGradient className="flex flex-col p-6 gap-4">
+      {/* Image - fixed height */}
       <div className="relative w-full h-48 rounded-lg overflow-hidden mb-2">
         <Image
           src={image}
@@ -49,21 +73,34 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, te
           className="object-cover"
         />
       </div>
-      <h3 className="text-xl font-semibold text-white">{title}</h3>
-      <p className="text-sm text-neutral-300">{description}</p>
       
-      <div className="flex flex-wrap gap-2 mt-2">
-        {technologies.map((tech, index) => {
-          const Icon = iconMap[tech.name as keyof typeof iconMap];
-          return (
-            <div key={index} className="flex items-center gap-1.5 bg-neutral-800/50 rounded px-2 py-1">
-              <Icon className="w-4 h-4 text-neutral-300" />
-              <span className="text-sm text-neutral-300">{tech.name}</span>
-            </div>
-          );
-        })}
+      {/* Title */}
+      <div>
+        <h3 className="text-xl font-semibold text-white truncate">{title}</h3>
+      </div>
+      
+      {/* Description - full content without clamp */}
+      <div>
+        <p className="text-sm text-neutral-300">{description}</p>
+      </div>
+      
+      {/* Technologies - removed fixed height and scrollbar */}
+      <div className="mt-2">
+        <div className="flex flex-wrap gap-2">
+          {technologies.map((tech, index) => {
+            // Use the icon from map or fallback to default icon if not found
+            const Icon = iconMap[tech.name as keyof typeof iconMap] || DefaultIcon;
+            return (
+              <div key={index} className="flex items-center gap-1.5 bg-neutral-800/50 rounded px-2 py-1 mb-2">
+                <Icon className="w-4 h-4 text-neutral-300" />
+                <span className="text-sm text-neutral-300">{tech.name}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
 
+      {/* Source code button - at the bottom */}
       <div className="mt-auto pt-4">
         {sourceCodeUrl && (
           <a

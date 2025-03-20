@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { createNoise3D } from "simplex-noise";
 
 export const WavyBackground = ({
@@ -36,7 +36,8 @@ export const WavyBackground = ({
     canvas: HTMLCanvasElement | null;
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const getSpeed = () => {
+  const animationIdRef = useRef<number>(0);
+  const getSpeed = useCallback(() => {
     switch (speed) {
       case "slow":
         return 0.001;
@@ -45,9 +46,9 @@ export const WavyBackground = ({
       default:
         return 0.001;
     }
-  };
+  }, [speed]);
 
-  const init = () => {
+  const init = useCallback(() => {
     canvas = canvasRef.current;
     if (!canvas) return;
     
@@ -86,7 +87,7 @@ export const WavyBackground = ({
     return () => {
       window.removeEventListener('resize', updateCanvasSize);
     };
-  };
+  }, [blur]);
 
   const waveColors = colors ?? [
     "#38bdf8",
@@ -95,7 +96,8 @@ export const WavyBackground = ({
     "#e879f9",
     "#22d3ee",
   ];
-  const drawWave = (n: number) => {
+  
+  const drawWave = useCallback((n: number) => {
     if (!ctx) return;
     
     nt += getSpeed();
@@ -110,26 +112,25 @@ export const WavyBackground = ({
       ctx.stroke();
       ctx.closePath();
     }
-  };
+  }, [getSpeed, waveColors, waveWidth]);
 
-  let animationId: number;
-  const render = () => {
+  const render = useCallback(() => {
     if (!ctx) return;
     
     ctx.fillStyle = backgroundFill || "black";
     ctx.globalAlpha = waveOpacity || 0.5;
     ctx.fillRect(0, 0, w, h);
     drawWave(5);
-    animationId = requestAnimationFrame(render);
-  };
+    animationIdRef.current = requestAnimationFrame(render);
+  }, [backgroundFill, waveOpacity, drawWave]);
 
   useEffect(() => {
     const cleanup = init();
     return () => {
-      cancelAnimationFrame(animationId);
+      cancelAnimationFrame(animationIdRef.current);
       if (cleanup) cleanup();
     };
-  }, []);
+  }, [init]);
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {

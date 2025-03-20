@@ -251,7 +251,6 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
                     </div>
                     <div className="space-y-2">
                       <ReCaptchaProvider onChange={setCaptcha}>
-                        {!captcha && <div className="text-yellow-500 text-sm mb-2">Please complete the captcha verification</div>}
                         <div className="w-full">
                           <button
                             type="submit"

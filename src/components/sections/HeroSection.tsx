@@ -31,19 +31,19 @@ export function HeroSection() {
 
             <div className="space-x-4 pt-4">
               <a href="https://github.com/reese001" target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <Button variant="aurora" className="rounded-lg hover:cursor-pointer">
                   <FaGithub className="w-4 h-4 mr-2" />
                   GitHub  
                 </Button>
               </a>
               <a href="https://www.linkedin.com/in/reese-parsons/" target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <Button variant="aurora" className="rounded-lg hover:cursor-pointer">
                   <FaLinkedin className="w-4 h-4 mr-2" />
                   LinkedIn
                 </Button>
               </a>
               <a href="/resume-reese-parsons.pdf" download>
-                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <Button variant="aurora" className="rounded-lg hover:cursor-pointer">
                   <FaFileDownload className="w-4 h-4 mr-2" />
                   Resume
                 </Button>
@@ -52,17 +52,17 @@ export function HeroSection() {
 
             <div className="pt-8 space-x-4">
               <Link href="/about">
-                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <Button variant="aurora" className="rounded-lg hover:cursor-pointer">
                   About Me
                 </Button>
               </Link>
               <Link href="/projects">
-                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <Button variant="aurora" className="rounded-lg hover:cursor-pointer">
                   My Projects
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <Button variant="aurora" className="rounded-lg hover:cursor-pointer">
                   Contact Me
                 </Button>
               </Link>
@@ -84,19 +84,19 @@ export function HeroSection() {
             
             <div className="space-x-4 pt-4">
               <a href="https://github.com/reese001" target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <Button variant="aurora" className="rounded-lg hover:cursor-pointer">
                   <FaGithub className="w-4 h-4 mr-2" />
                   GitHub  
                 </Button>
               </a>
               <a href="https://www.linkedin.com/in/reese-parsons/" target="_blank" rel="noopener noreferrer">
-                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <Button variant="aurora" className="rounded-lg hover:cursor-pointer">
                   <FaLinkedin className="w-4 h-4 mr-2" />
                   LinkedIn
                 </Button>
               </a>
               <a href="/resume-reese-parsons.pdf" download>
-                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <Button variant="aurora" className="rounded-lg hover:cursor-pointer">
                   <FaFileDownload className="w-4 h-4 mr-2" />
                   Resume
                 </Button>

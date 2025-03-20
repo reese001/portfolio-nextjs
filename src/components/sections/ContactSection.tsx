@@ -21,13 +21,18 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
   const success = searchParams.get("success");
   const [showSuccess, setShowSuccess] = useState(false);
   const [captcha, setCaptcha] = useState<string | null>(null);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
+  
   const {
     register,
     handleSubmit,
     reset,
     setValue,
     formState: { errors, isSubmitting },
-  } = useForm<ContactFormData>({resolver: zodResolver(contactFormSchema)});
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
+    mode: "onBlur" // Validate fields when they lose focus
+  });
   
   // Update form data with captcha value when it changes
   useEffect(() => {
@@ -37,9 +42,12 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
   }, [captcha, setValue]);
   
   const onSubmit = async (formData: ContactFormData) => {
+    // Clear any previous submission errors
+    setSubmissionError(null);
+    
     // Ensure captcha is provided
     if (!captcha) {
-      alert("Please complete the captcha verification");
+      setSubmissionError("Please complete the captcha verification");
       return false;
     }
     
@@ -56,10 +64,13 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
             setShowSuccess(false);
           }, 5000);
           return true;
+        } else if (result.error) {
+          setSubmissionError(result.error);
+          return false;
         }
         // If server action fails, continue to fallback
       } catch (err) {
-        console.log(err)
+        console.log(err);
         // Continue to fallback
       }
       
@@ -90,7 +101,7 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
         }, 5000);
         return true;
       } else {
-        alert(`Failed to send message: ${apiResult.error}`);
+        setSubmissionError(apiResult.error || "Failed to send message. Please try again later.");
         return false;
       }
     } catch (err) {
@@ -100,7 +111,7 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
         errorMessage += ` Error details: ${err.message}`;
       }
       
-      alert(errorMessage);
+      setSubmissionError(errorMessage);
       return false;
     }
   }
@@ -187,12 +198,21 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
                       Message sent successfully! I&apos;ll get back to you soon.
                     </div>
                   )}
-                  <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-                    <input type="hidden" {...register("captcha")} />
-                    
-                    <div id="form-error" className="text-red-500 text-sm hidden">
-                      There was an error submitting the form. Please try again.
+                  
+                  {submissionError && (
+                    <div className="mb-6 p-4 bg-red-900/30 border border-red-600 rounded-lg text-red-300">
+                      <div className="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                        </svg>
+                        <span>Error</span>
+                      </div>
+                      <p className="mt-1 ml-7">{submissionError}</p>
                     </div>
+                  )}
+                  
+                  <form className="space-y-6" onSubmit={handleSubmit(onSubmit)} noValidate>
+                    <input type="hidden" {...register("captcha")} />
                     
                     <div className="space-y-2 text-left">
                       <label htmlFor="name" className="text-sm font-medium text-gray-300">
@@ -202,8 +222,8 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
                         type="text"
                         id="name"
                         placeholder="Your name"
-                        className="bg-zinc-900/80 border-zinc-800 text-white focus:border-indigo-500 focus:ring-indigo-500"
-                        required
+                        className={`bg-zinc-900/80 border-zinc-800 text-white focus:border-indigo-500 focus:ring-indigo-500 ${errors.name ? 'border-red-500' : ''}`}
+                        aria-invalid={errors.name ? "true" : "false"}
                         {...register("name")}
                       />
                       {errors.name && <span className="text-red-500 text-sm">{errors.name.message}</span>}
@@ -216,8 +236,8 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
                         type="email"
                         id="email"
                         placeholder="your.email@example.com"
-                        className="bg-zinc-900/80 border-zinc-800 text-white focus:border-indigo-500 focus:ring-indigo-500"
-                        required
+                        className={`bg-zinc-900/80 border-zinc-800 text-white focus:border-indigo-500 focus:ring-indigo-500 ${errors.email ? 'border-red-500' : ''}`}
+                        aria-invalid={errors.email ? "true" : "false"}
                         {...register("email")}
                       />
                       {errors.email && <span className="text-red-500 text-sm">{errors.email.message}</span>}
@@ -230,8 +250,8 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
                         type="text"
                         id="subject"
                         placeholder="Subject of your message"
-                        className="bg-zinc-900/80 border-zinc-800 text-white focus:border-indigo-500 focus:ring-indigo-500"
-                        required
+                        className={`bg-zinc-900/80 border-zinc-800 text-white focus:border-indigo-500 focus:ring-indigo-500 ${errors.subject ? 'border-red-500' : ''}`}
+                        aria-invalid={errors.subject ? "true" : "false"}
                         {...register("subject")}
                       />
                       {errors.subject && <span className="text-red-500 text-sm">{errors.subject.message}</span>}
@@ -243,14 +263,24 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
                       <Textarea
                         id="message"
                         placeholder="Your message..."
-                        className="bg-zinc-900/80 border-zinc-800 text-white resize-none focus:border-indigo-500 focus:ring-indigo-500"
-                        required
+                        className={`bg-zinc-900/80 border-zinc-800 text-white resize-none focus:border-indigo-500 focus:ring-indigo-500 ${errors.message ? 'border-red-500' : ''}`}
+                        aria-invalid={errors.message ? "true" : "false"}
                         {...register("message")}
                       />
                       {errors.message && <span className="text-red-500 text-sm">{errors.message.message}</span>}
                     </div>
                     <div className="space-y-2">
                       <ReCaptchaProvider onChange={setCaptcha}>
+                        {!captcha && errors.captcha && (
+                          <div className="text-red-500 text-sm mb-2">
+                            {errors.captcha.message}
+                          </div>
+                        )}
+                        {!captcha && !errors.captcha && (
+                          <div className="text-yellow-500 text-sm mb-2">
+                            Please complete the captcha verification
+                          </div>
+                        )}
                         <div className="w-full">
                           <button
                             type="submit"

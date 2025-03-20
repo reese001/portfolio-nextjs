@@ -13,9 +13,9 @@ export function AboutSection() {
   }, []);
 
   return (
-    <section id="about" className="relative min-h-screen w-full bg-black py-20 overflow-hidden">
+    <section id="about" className="relative w-full bg-black py-12 overflow-hidden">
       {isMounted && (
-        <div className="absolute inset-0 w-screen overflow-hidden">
+        <div className="absolute inset-0 w-screen overflow-hidden translate-x-12">
           {/* First layer of meteors - faster and more transparent */}
           <Meteors 
             number={60} 
@@ -30,14 +30,15 @@ export function AboutSection() {
           </div>
         </div>
       )}
-      <div className="relative container mx-auto px-4 py-10 text-center" style={{ zIndex: 10 }}>
-        <h1 className="text-5xl md:text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-800 text-transparent font-semibold mb-10">
+      <div className="relative mx-auto px-4 py-8 text-center" style={{ zIndex: 10 }}>
+        <h1 className="text-5xl md:text-7xl tracking-tight bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-800 text-transparent font-semibold mb-16">
           About Me
         </h1>
-        <div className="max-w-3xl mx-auto text-gray-300">
-          <p className="text-lg leading-relaxed mb-3">
-            I&apos;m Reese Parsons, a 2nd year student in the IT Web Programming course at Nova Scotia Community College.</p>
-          <p className="text-lg leading-relaxed mb-3">
+        <div className="max-w-3xl mx-auto text-gray-300 space-y-6">
+          <p className="text-lg leading-relaxed">
+            I&apos;m Reese Parsons, a 2nd year student in the IT Web Programming course at Nova Scotia Community College.
+          </p>
+          <p className="text-lg leading-relaxed">
             I was born and raised in Truro, Nova Scotia, and first starting programming in 2022, self teaching myself Python using online courses. I discovered a passion for programming and decided it was something I wanted to pursue.
           </p>
           <p className="text-lg leading-relaxed">

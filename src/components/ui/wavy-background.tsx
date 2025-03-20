@@ -10,9 +10,9 @@ export const WavyBackground = ({
   colors,
   waveWidth,
   backgroundFill,
-  blur = 5,
-  speed = "fast",
-  waveOpacity = 0.8,
+  blur = 15,
+  speed = "slow",
+  waveOpacity = 0.5,
   ...props
 }: {
   children?: React.ReactNode;

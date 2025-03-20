@@ -18,9 +18,9 @@ type SpotlightProps = {
 };
 
 export const Spotlight = ({
-  gradientFirst = "radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(210, 100%, 85%, .08) 0, hsla(210, 100%, 55%, .02) 50%, hsla(210, 100%, 45%, 0) 80%)",
-  gradientSecond = "radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, .06) 0, hsla(210, 100%, 55%, .02) 80%, transparent 100%)",
-  gradientThird = "radial-gradient(50% 50% at 50% 50%, hsla(210, 100%, 85%, .04) 0, hsla(210, 100%, 45%, .02) 80%, transparent 100%)",
+  gradientFirst = "radial-gradient(68.54% 68.72% at 55.02% 31.46%, hsla(250, 100%, 85%, .08) 0, hsla(250, 100%, 55%, .02) 50%, hsla(250, 100%, 45%, 0) 80%)",
+  gradientSecond = "radial-gradient(50% 50% at 50% 50%, hsla(250, 100%, 85%, .06) 0, hsla(250, 100%, 55%, .02) 80%, transparent 100%)",
+  gradientThird = "radial-gradient(50% 50% at 50% 50%, hsla(250, 100%, 85%, .04) 0, hsla(250, 100%, 45%, .02) 80%, transparent 100%)",
   translateY = -350,
   width = 560,
   height = 1380,
@@ -72,10 +72,10 @@ export const Spotlight = ({
             maxWidth: '1400px',
             height: '800px',
             background: `radial-gradient(ellipse at center, 
-              rgba(100, 150, 255, 0.2) 0%, 
-              rgba(80, 130, 220, 0.15) 20%, 
-              rgba(60, 110, 200, 0.08) 40%,
-              rgba(40, 80, 180, 0.04) 60%,
+              rgba(129, 140, 248, 0.2) 0%, 
+              rgba(99, 102, 241, 0.15) 20%, 
+              rgba(79, 70, 229, 0.08) 40%,
+              rgba(79, 70, 229, 0.04) 60%,
               rgba(0, 0, 0, 0) 80%)`,
             opacity: 0.8,
             filter: 'blur(40px)'
@@ -88,9 +88,9 @@ export const Spotlight = ({
             className="absolute w-full h-full"
             style={{
               background: `radial-gradient(1000px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-                rgba(100, 150, 255, 0.15) 0%, 
-                rgba(70, 120, 220, 0.08) 25%, 
-                rgba(40, 80, 180, 0.02) 50%,
+                rgba(129, 140, 248, 0.15) 0%, 
+                rgba(99, 102, 241, 0.08) 25%, 
+                rgba(79, 70, 229, 0.02) 50%,
                 rgba(0, 0, 0, 0) 75%)`,
               top: 0,
               left: 0,
@@ -105,8 +105,8 @@ export const Spotlight = ({
           className="absolute opacity-60"
           style={{
             background: `radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
-              rgba(130, 170, 255, 0.14) 0%, 
-              rgba(100, 150, 230, 0.08) 30%, 
+              rgba(129, 140, 248, 0.14) 0%, 
+              rgba(99, 102, 241, 0.08) 30%, 
               rgba(0, 0, 0, 0) 70%)`,
             width: '100%',
             height: '100%',

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { useEffect, useState } from "react";
+import { FaFileDownload } from "react-icons/fa";
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
@@ -29,14 +30,24 @@ export function HeroSection() {
             </p>
 
             <div className="space-x-3">
-              <Button variant="default" className="rounded-lg">
+              <a href="https://github.com/reese001" target="_blank">
+              <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
                 <FaGithub className="w-4 h-4" />
                 GitHub  
               </Button>
-              <Button variant="secondary" className="rounded-lg">
+              </a>
+              <a href="https://www.linkedin.com/in/reese-parsons/" target="_blank">
+              <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
                 <FaLinkedin className="w-4 h-4" />
                 LinkedIn
               </Button>
+              </a>
+              <a href="/resume-reese-parsons.pdf" download>
+              <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <FaFileDownload className="w-4 h-4" />
+                Resume
+              </Button>
+              </a>
             </div>
           </div>
         </AuroraBackground>
@@ -52,6 +63,27 @@ export function HeroSection() {
               I am a <span className="bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 text-transparent font-semibold">Full Stack Developer</span> from
               Nova Scotia, Canada.
             </p>
+            
+            <div className="space-x-3">
+              <a href="https://github.com/reese001" target="_blank">
+              <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <FaGithub className="w-4 h-4" />
+                GitHub  
+              </Button>
+              </a>
+              <a href="https://www.linkedin.com/in/reese-parsons/" target="_blank">
+              <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <FaLinkedin className="w-4 h-4" />
+                LinkedIn
+              </Button>
+              </a>
+              <a href="/resume.pdf" download>
+              <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                <FaFileDownload className="w-4 h-4" />
+                Resume
+              </Button>
+              </a>
+            </div>
           </div>
         </div>
       )}

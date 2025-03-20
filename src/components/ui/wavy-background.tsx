@@ -10,9 +10,9 @@ export const WavyBackground = ({
   colors,
   waveWidth,
   backgroundFill,
-  blur = 10,
+  blur = 5,
   speed = "fast",
-  waveOpacity = 0.5,
+  waveOpacity = 0.8,
   ...props
 }: {
   children?: React.ReactNode;
@@ -145,19 +145,19 @@ export const WavyBackground = ({
     <div
       ref={containerRef}
       className={cn(
-        "h-screen flex flex-col items-center justify-center relative w-full overflow-hidden",
+        "min-h-screen flex flex-col items-center justify-center relative w-full overflow-hidden",
         containerClassName
       )}
     >
       <canvas
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 w-full h-full"
         ref={canvasRef}
         id="canvas"
         style={{
           ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
         }}
       ></canvas>
-      <div className={cn("relative z-10", className)} {...props}>
+      <div className={cn("relative z-10 w-full py-4", className)} {...props}>
         {children}
       </div>
     </div>

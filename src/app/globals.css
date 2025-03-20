@@ -167,6 +167,8 @@
     scrollbar-width: thin;
     scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   }
+
+  .grecaptcha-badge { visibility: hidden; }
   
   /* Chrome, Edge, and Safari */
   ::-webkit-scrollbar {

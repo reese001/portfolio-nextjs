@@ -8,7 +8,7 @@
           { "name": "TypeScript" },
           { "name": "Tailwind CSS" }
         ],
-        "sourceCodeUrl": "#",
+        "sourceCodeUrl": "https://github.com/reese001/world-map-electron",
         "image": "/world-map.png"
       },
   {
@@ -21,7 +21,7 @@
       { "name": "MongoDB" },
       { "name": "Tailwind CSS" }
     ],
-    "sourceCodeUrl": "#",
+    "sourceCodeUrl": "https://github.com/reese001/tech-roster-admin",
     "image": "/tech-admin.png"
   },
   {
@@ -33,7 +33,7 @@
       { "name": "MySQL" },
       { "name": "Tailwind CSS" }
     ],
-    "sourceCodeUrl": "#",
+    "sourceCodeUrl": "https://github.com/reese001/budgeting-app",
     "image": "/budget-app.png"
   },
   {
@@ -45,7 +45,7 @@
       { "name": "TypeScript" },
       { "name": "Tailwind CSS" }
     ],
-    "sourceCodeUrl": "#",
+    "sourceCodeUrl": "https://github.com/reese001/portfolio-nextjs",
     "image": "/portfolio.png"
   }, 
   {
@@ -56,7 +56,7 @@
       { "name": "MySQL" },
       { "name": "Tailwind CSS" }
     ],
-    "sourceCodeUrl": "#",
+    "sourceCodeUrl": "https://github.com/reese001/review-app-project",
     "image": "/review-app-form.png"
   },
   {
@@ -67,7 +67,7 @@
       { "name": "CSS" },
       { "name": "JavaScript" }
     ],
-    "sourceCodeUrl": "#",
+    "sourceCodeUrl": "https://github.com/reese001/weather-app",
     "image": "/weather-app.png"
   }
 ] 

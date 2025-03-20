@@ -64,13 +64,13 @@ const DefaultIcon = FaCode;
 export const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technologies, sourceCodeUrl, image }) => {
   return (
     <BackgroundGradient className="flex flex-col p-6 gap-4">
-      {/* Image - fixed height */}
       <div className="relative w-full h-48 rounded-lg overflow-hidden mb-2">
         <Image
           src={image}
           alt={title}
           fill
-          className="object-cover"
+          className="object-cover object-center"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
       
@@ -100,12 +100,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, te
         </div>
       </div>
 
-      {/* Source code button - at the bottom */}
       <div className="mt-auto pt-4">
         {sourceCodeUrl && (
           <a
             href={sourceCodeUrl}
             className="flex items-center justify-center w-full gap-2 px-4 py-2 text-sm font-medium text-neutral-300 bg-neutral-800/50 rounded-md hover:bg-neutral-700/50 transition-colors"
+            target="_blank"
           >
             Source code
           </a>

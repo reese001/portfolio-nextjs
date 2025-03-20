@@ -4,7 +4,9 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Script from "next/script";
 
-const montserrat = Montserrat();
+const montserrat = Montserrat({
+  subsets: ['latin']
+});
 
 export const metadata: Metadata = {
   title: "Reese Parsons | Portfolio",

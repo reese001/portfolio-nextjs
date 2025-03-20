@@ -140,7 +140,7 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
                 {/* Left Column - Contact Information */}
-                <div className="backdrop-blur-sm bg-black/20 p-8 rounded-xl border border-gray-800 flex flex-col space-y-8">
+                <div className="backdrop-blur-sm bg-black/40 p-8 rounded-xl border border-gray-700 flex flex-col space-y-8">
                   <h2 className="text-2xl font-bold bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent">Get In Touch</h2>
                   
                   <div className="space-y-6">
@@ -188,7 +188,7 @@ export function ContactSection({ sendMail }: ContactSectionProps) {
                 </div>
                 
                 {/* Right Column - Contact Form */}
-                <div className="backdrop-blur-sm bg-black/20 p-8 rounded-xl border border-gray-800">
+                <div className="backdrop-blur-sm bg-black/40 p-8 rounded-xl border border-gray-700">
                   <h2 className="text-2xl font-bold bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent mb-8">Send a Message</h2>
                   {showSuccess && (
                     <div className="mb-6 p-4 bg-green-900/50 border border-green-600 rounded-lg text-green-300 flex items-center justify-center">

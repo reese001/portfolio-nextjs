@@ -1,10 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaFileDownload } from "react-icons/fa";
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { useEffect, useState } from "react";
-import { FaFileDownload } from "react-icons/fa";
+import Link from "next/link";
 
 export function HeroSection() {
   const [isMounted, setIsMounted] = useState(false);
@@ -48,6 +48,24 @@ export function HeroSection() {
                   Resume
                 </Button>
               </a>
+            </div>
+
+            <div className="pt-8 space-x-4">
+              <Link href="/about">
+                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                  About Me
+                </Button>
+              </Link>
+              <Link href="/projects">
+                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                  My Projects
+                </Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="secondary" className="rounded-lg hover:cursor-pointer">
+                  Contact Me
+                </Button>
+              </Link>
             </div>
           </div>
         </AuroraBackground>

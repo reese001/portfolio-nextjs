@@ -63,8 +63,8 @@ const DefaultIcon = FaCode;
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technologies, sourceCodeUrl, image }) => {
   return (
-    <BackgroundGradient className="flex flex-col p-6 gap-4">
-      <div className="relative w-full h-48 rounded-lg overflow-hidden mb-2">
+    <BackgroundGradient className="flex flex-col p-6 gap-4 ">
+      <div className="relative w-full h-48 backdrop-blur-sm bg-black/40 rounded-lg overflow-hidden mb-2">
         <Image
           src={image}
           alt={title}

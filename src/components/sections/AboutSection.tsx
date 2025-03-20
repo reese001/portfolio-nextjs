@@ -13,7 +13,7 @@ export function AboutSection() {
   }, []);
 
   return (
-    <section id="about" className="relative min-h-screen w-full bg-black py-12 mb-20 overflow-hidden">
+    <section id="about" className="relative min-h-screen w-full bg-black py-12 mb-10 overflow-hidden">
       {isMounted && (
         <div className="absolute inset-0 w-screen overflow-hidden translate-x-12">
           {/* First layer of meteors - faster and more transparent */}

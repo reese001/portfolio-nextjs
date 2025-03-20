@@ -1,9 +1,26 @@
 import { NextResponse } from 'next/server';
 import { sendMailWithSendGrid } from '@/app/services/sendgrid';
+import { contactFormSchema } from '@/app/utils/validation/contact-form';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    
+    // Validate input data
+    try {
+      // Create a partial schema without captcha for API validation
+      const apiSchema = contactFormSchema.omit({ captcha: true }).extend({
+        captcha: contactFormSchema.shape.captcha.optional()
+      });
+      
+      apiSchema.parse(body);
+    } catch (validationError) {
+      console.error('Validation error:', validationError);
+      return NextResponse.json({ 
+        success: false, 
+        error: 'Invalid form data' 
+      }, { status: 400 });
+    }
     
     if (!body.name || !body.email || !body.message) {
       return NextResponse.json({ 

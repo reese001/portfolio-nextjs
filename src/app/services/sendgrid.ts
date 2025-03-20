@@ -11,6 +11,16 @@ export interface EmailResult {
   error: string | null;
 }
 
+// Helper function to escape HTML special characters
+function escapeHtml(unsafe: string): string {
+  return unsafe
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 export async function sendMailWithSendGrid(data: ContactFormData): Promise<EmailResult> {
   // Ensure API key is set
   if (!process.env.SENDGRID_API_KEY) {
@@ -31,6 +41,12 @@ export async function sendMailWithSendGrid(data: ContactFormData): Promise<Email
   }
   
   try {
+    // Sanitize user inputs
+    const sanitizedName = escapeHtml(data.name);
+    const sanitizedEmail = escapeHtml(data.email);
+    const sanitizedSubject = escapeHtml(data.subject);
+    const sanitizedMessage = escapeHtml(data.message);
+    
     // Set up the email data
     const msg = {
       to: process.env.MAIL_RECEIVER_ADDRESS,
@@ -38,16 +54,16 @@ export async function sendMailWithSendGrid(data: ContactFormData): Promise<Email
         email: process.env.SENDGRID_FROM_EMAIL || 'noreply@example.com',
         name: process.env.SENDGRID_FROM_NAME || 'Contact Form',
       },
-      replyTo: data.email,
-      subject: `Contact Form: ${data.subject}`,
-      text: `Message from: ${data.name} <${data.email}>\nSubject: ${data.subject}\n\n${data.message}`,
+      replyTo: sanitizedEmail,
+      subject: `Contact Form: ${sanitizedSubject}`,
+      text: `Message from: ${sanitizedName} <${sanitizedEmail}>\nSubject: ${sanitizedSubject}\n\n${sanitizedMessage}`,
       html: `<div>
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>Subject:</strong> ${data.subject}</p>
+        <p><strong>Name:</strong> ${sanitizedName}</p>
+        <p><strong>Email:</strong> ${sanitizedEmail}</p>
+        <p><strong>Subject:</strong> ${sanitizedSubject}</p>
         <p><strong>Message:</strong></p>
-        <p>${data.message.replace(/\n/g, '<br>')}</p>
+        <p>${sanitizedMessage.replace(/\n/g, '<br>')}</p>
       </div>`,
     };
     

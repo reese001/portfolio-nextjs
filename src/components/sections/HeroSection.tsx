@@ -23,11 +23,12 @@ export function HeroSection() {
                 Hi, I&apos;m Reese Parsons
               </h1>
             </div>
-            <p className="text-gray-400 text-lg text-pretty max-w-2xl mx-auto">
-              I am a <span className="bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 text-transparent font-semibold">Full Stack Developer</span> from
-              Nova Scotia, Canada. Below you will find some info about me, my
-              projects, and a resume outlining my skills and experiences
-            </p>
+            <div>
+              <p className="text-gray-400 text-lg text-pretty max-w-2xl mx-auto">
+                I am a <span className="bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 text-transparent font-semibold">Full Stack Developer</span> from
+                Nova Scotia, Canada. </p>  <p className="text-gray-400 text-lg text-pretty max-w-2xl mx-auto">Below you will find some info about me, my
+                projects, and a resume outlining my skills and experiences</p>
+            </div>
 
             <div className="space-x-4 pt-4">
               <a href="https://github.com/reese001" target="_blank" rel="noopener noreferrer">
